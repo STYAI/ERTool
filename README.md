@@ -33,7 +33,7 @@ ertool.er.er_algorithm(W, DBF, numOfEvidence, numOfPropositions)
 - ***numOfPropositions***: An integer. It indicates the number of propositions or evidential grades. In the DBF array, this typically corresponds to the number of columns.
 
 #### Output
-- ***B Array***: Upon completion of the algorithm, the B array is updated with the final calculation results. It reflects the degree of belief of each proposition or evidential grades for the object being assessed after combining all available evidence. The pre-Numofproposition values in the B represent the belief degree of each proposition after evidence fusion. The last value of the B represents the belief degree of the global uncertainty.
+- ***B Array***: Upon completion of the algorithm, the B array is updated with the final calculation results. It reflects the degree of belief of each proposition or evidential grades for the object being assessed after combining all available evidence. The pre-Numofproposition values in the B represent the belief degree of each proposition after evidence fusion. The last value of the B represents the belief degree of the overall uncertainty.
 - ***False (Boolean)***: It returns True if the algorithm successfully executes and completes all computations. If any error is encountered during execution (e.g., division by zero), it returns False.
 
 
@@ -45,14 +45,46 @@ ertool.er.dempster_rule(DBF, numOfEvidence, numOfPropositions)
 <kbd>dempster_rule()</kbd> can implement the original Dempster-Shafer evidence theory.
 
 #### Input
-- ***DBF***: A two-dimensional array of floats. It stands for "Degrees of Belief" and is one of the main inputs to the algorithm, used to represent the initial belief degree of each proposition supported by each evidence. The pre-Numofproposition values in the B represent the belief degree of each proposition after evidence fusion. The last value of the B represents the belief degree of the global uncertainty.
+- ***DBF***: A two-dimensional array of floats. It stands for "Degrees of Belief" and is one of the main inputs to the algorithm, used to represent the initial belief degree of each proposition supported by each evidence. The pre-Numofproposition values in the B represent the belief degree of each proposition after evidence fusion. The last value of the B represents the belief degree of the overall uncertainty.
 - ***numOfEvidence***: An integer. It indicates the number of evidence to be combined. In the DBF array, this typically corresponds to the number of rows.
 - ***numOfPropositions***: An integer. It indicates the number of propositions or evidential grades. In the DBF array, this typically corresponds to the number of columns.
 
 #### Output
-- ***B Array***: Upon completion of the algorithm, the B array is updated with the final calculation results. It reflects the degree of belief of each proposition or evidential grades for the object being assessed after combining all available evidence.
+- ***B Array***: Upon completion of the Dempster's Rule, the B array is updated with the final calculation results. It reflects the degree of belief of each proposition or evidential grades for the object being assessed after combining all available evidence.
 - ***False (Boolean)***: It returns True if the algorithm successfully executes and completes all computations. If any error is encountered during execution (e.g., division by zero), it returns False.
 
+
+### yager_rule
+```python
+ertool.er.yager_rule(DBF, numOfEvidence, numOfPropositions)
+```
+
+<kbd>yager_rule()</kbd> can implement the original Yager's Rule.
+
+#### Input
+- ***DBF***: A two-dimensional array of floats. It stands for "Degrees of Belief" and is one of the main inputs to the algorithm, used to represent the initial belief degree of each proposition supported by each evidence. The pre-Numofproposition values in the B represent the belief degree of each proposition after evidence fusion. The last value of the B represents the belief degree of the overall uncertainty.
+- ***numOfEvidence***: An integer. It indicates the number of evidence to be combined. In the DBF array, this typically corresponds to the number of rows.
+- ***numOfPropositions***: An integer. It indicates the number of propositions or evidential grades. In the DBF array, this typically corresponds to the number of columns.
+
+#### Output
+- ***B Array***: Upon completion of the Yager's Rule, the B array is updated with the final calculation results. It reflects the degree of belief of each proposition or evidential grades for the object being assessed after combining all available evidence.
+- ***False (Boolean)***: It returns True if the algorithm successfully executes and completes all computations. If any error is encountered during execution (e.g., division by zero), it returns False.
+
+### murphy_rule
+```python
+ertool.er.murphy_rule(DBF, numOfEvidence, numOfPropositions)
+```
+
+<kbd>murphy_rule()</kbd> can implement the original Murphy's Rule.
+
+#### Input
+- ***DBF***: A two-dimensional array of floats. It stands for "Degrees of Belief" and is one of the main inputs to the algorithm, used to represent the initial belief degree of each proposition supported by each evidence. The pre-Numofproposition values in the B represent the belief degree of each proposition after evidence fusion. The last value of the B represents the belief degree of the overall uncertainty.
+- ***numOfEvidence***: An integer. It indicates the number of evidence to be combined. In the DBF array, this typically corresponds to the number of rows.
+- ***numOfPropositions***: An integer. It indicates the number of propositions or evidential grades. In the DBF array, this typically corresponds to the number of columns.
+
+#### Output
+- ***B Array***: Upon completion of the Murphy's Rule, the B array is updated with the final calculation results. It reflects the degree of belief of each proposition or evidential grades for the object being assessed after combining all available evidence.
+- ***False (Boolean)***: It returns True if the algorithm successfully executes and completes all computations. If any error is encountered during execution (e.g., division by zero), it returns False.
 
 ### show_er_result
 ```python
@@ -73,10 +105,11 @@ ertool.er.run_algorithm_from_file(file_path, algorithm = ’ER’)
 
 #### Input
 - ***file_path***: A string. The location of the CSV or XLSX file. Note that the format of data strictly follows the format of the provided template.
-- ***algorithm***: ’ER’ or ’DS’. ‘ER’ stands for using the ER approach, and ’DS’ stands for using the Dempster-Shafer theory.
+- ***algorithm***: 'ER', 'Demp', 'Yager' or 'Murphy'. 'ER' stands for using the Evidence Inference algorithm, 'Demp' stands for using the Dempster-Shafer algorithm, 'Yager' stands for using the Yager's Rule, and 'Murphy' stands for using the Murphy's Rule.
+
 
 #### Output
-- ***B Array***: Upon completion of the algorithm, the B array is updated with the final calculation results. It reflects the degree of belief in each proposition or evaluation grade for the object being assessed after combining all available evidence. The first numofPropositions members in the B represent the belief degree in each proposition after evidence fusion. The last member of the B represents the belief degree in the global uncertainty.
+- ***B Array***: Upon completion of the algorithm, the B array is updated with the final calculation results. It reflects the degree of belief in each proposition or evaluation grade for the object being assessed after combining all available evidence. The first numofPropositions members in the B represent the belief degree in each proposition after evidence fusion. The last member of the B represents the belief degree in the overall uncertainty.
 - ***False (Boolean)***: It returns True if the algorithm successfully executes and completes all computations. If any error is encountered during execution (e.g., division by zero), it returns False.
 
 ### multi_level_multi_source
@@ -139,13 +172,13 @@ With the code, we can calculate the probability that the patient will be diagnos
 ```
 The result: [0.43317251 0.307059 0.16390311 0.09586537]
 ```
-The calculation results show that the probability of the patient being diagnosed with a cold, common pneumonia, and COVID-19 are 0.43317251, 0.307059, and 0.16390311, respectively. The last member of B represents global uncertainty, and it is 0.09586537 in this example.
+The calculation results show that the probability of the patient being diagnosed with a cold, common pneumonia, and COVID-19 are 0.43317251, 0.307059, and 0.16390311, respectively. The last member of B represents overall uncertainty, and it is 0.09586537 in this example.
 
 ## Contributing
 Contributions to <kbd>***ERTool***</kbd> are welcome. Please contact us for how to contribute to the project.
 
 ## Reference
-Tongyue Shi, Liya Guo, Zeyuan Shen, Guilan Kong. ERTool: A Python Package for Efficient Implementation of the Evidential Reasoning Approach for Multi-Source Evidence Fusion. 2024.
+Tongyue Shi, Liya Guo, Zeyuan Shen, Guilan Kong. ERTool: A Python Package for Efficient Implementation of the Evidential Reasoning Approach for Multi-Source Evidence Fusion. Health Data Science. 2024.
 
 ## Contact
 This project is supported by Peking University. For any questions or suggestions, please contact us at **tyshipku@gmail.com**.
