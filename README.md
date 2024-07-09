@@ -178,7 +178,7 @@ The calculation results show that the probability of the patient being diagnosed
 Contributions to <kbd>***ERTool***</kbd> are welcome. Please contact us for how to contribute to the project.
 
 ## Reference
-Tongyue Shi, Liya Guo, Zeyuan Shen, Guilan Kong. ERTool: A Python Package for Efficient Implementation of the Evidential Reasoning Approach for Multi-Source Evidence Fusion. Health Data Science. 2024.
+Tongyue Shi, Liya Guo, Zeyuan Shen, Guilan Kong. ERTool: A Python Package for Efficient Implementation of the Evidential Reasoning Approach for Multi-Source Evidence Fusion. _Health Data Science_. 2024. [**link**](https://spj.science.org/doi/abs/10.34133/hds.0128)
 
 ## Contact
 This project is supported by Peking University. For any questions or suggestions, please contact us at **tyshipku@gmail.com**.
